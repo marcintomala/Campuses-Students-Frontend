@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, useLocation, useHistory } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import axios from "axios";
 
 export default function EditStudent() {
@@ -9,10 +9,10 @@ export default function EditStudent() {
     const [lastName, setLastName] = useState(student.lastName);
     const [imageUrl, setImageUrl] = useState(student.imageUrl);
     const [email, setEmail] = useState(student.email);
-    const [gpa, setGpa] = useState(student.gpa)
+    const [gpa, setGpa] = useState(student.gpa);
     
     async function editStudent() {
-        const edit = await axios.put('https://ttp-college-db.herokuapp.com/students', {
+        await axios.put('https://ttp-college-db.herokuapp.com/students', {
             id : student.id,
             firstName : firstName,
             lastName : lastName,
@@ -20,7 +20,6 @@ export default function EditStudent() {
             email : email,
             gpa : gpa
         })
-        console.log(edit);
     }
     
     let navigate = useNavigate();
@@ -28,8 +27,7 @@ export default function EditStudent() {
         <form className='edit-student-form' 
             onSubmit={async e => {
                     e.preventDefault();
-                    const message = await editStudent();
-                    console.log(message);
+                    await editStudent();
                     navigate(origin);
                 }
             }>

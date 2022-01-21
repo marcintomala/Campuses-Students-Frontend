@@ -11,12 +11,12 @@ export default function Students() {
     }, [])
 
     async function deleteStudent(id) {
-        const outcome = await axios.delete('https://ttp-college-db.herokuapp.com/students/' + id);
-        console.log(outcome)
+        await axios.delete('https://ttp-college-db.herokuapp.com/students/' + id);
+        fetchStudents();
     }
 
     async function fetchStudents () {
-        const students = await axios.get('https://ttp-college-db.herokuapp.com/students');
+        await axios.get('https://ttp-college-db.herokuapp.com/students');
         setStudents(students.data.map(student => <StudentCard key={student.id} student={student} delete={deleteStudent} />));
     }
 

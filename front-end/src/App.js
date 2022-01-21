@@ -6,6 +6,8 @@ import Campuses from "./components/Campuses";
 import Students from "./components/Students";
 import EditStudent from "./components/EditStudent";
 import AddStudent from "./components/AddStudent"
+import EditCampus from "./components/EditCampus";
+import AddCampus from "./components/AddCampus";
 
 function App() {
   return (
@@ -13,10 +15,12 @@ function App() {
     <HashRouter>
       <Routes>
         <Route exact path="/" element={<Home />} >
-          <Route exact path="campuses" element={<Campuses/>} />
           <Route path="students" element={<Students />} />
-          <Route path="students/:id/edit" element={<EditStudent />} />
           <Route path="students/add" element={<AddStudent />} />
+          <Route path="students/:id/edit" element={<EditStudent />} />
+          <Route path="campuses" element={<Campuses/>} />
+          <Route path="campuses/add" element={<AddCampus />} />
+          <Route path="campuses/:id/edit" element={<EditCampus />} />
         </Route>
       </Routes>
     </HashRouter>

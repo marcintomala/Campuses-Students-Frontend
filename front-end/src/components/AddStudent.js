@@ -5,19 +5,21 @@ import axios from "axios";
 export default function AddStudent() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
+    const [imageUrl, setImageUrl] = useState(undefined);
     const [email, setEmail] = useState("");
-    const [gpa, setGpa] = useState(null)
+    const [gpa, setGpa] = useState(0)
     
     async function addStudent() {
-        const add = await axios.post('https://ttp-college-db.herokuapp.com/students', {
+        if(!imageUrl) {
+            setImageUrl(undefined);
+        }
+        await axios.post('https://ttp-college-db.herokuapp.com/students', {
             firstName : firstName,
             lastName : lastName,
             imageUrl : imageUrl,
             email : email,
             gpa : gpa
         })
-        console.log(add);
     }
     
     let navigate = useNavigate();
@@ -25,8 +27,7 @@ export default function AddStudent() {
         <form className='add-student-form' 
             onSubmit={async e => {
                     e.preventDefault();
-                    const message = await addStudent();
-                    console.log(message);
+                    await addStudent();
                     navigate('/students');
                 }
             }>
