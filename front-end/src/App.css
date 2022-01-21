@@ -3,6 +3,20 @@
   padding-right: 5px;
 }
 
+.campuses-view {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.campus-card {
+  width: 500px;
+  margin: 20px;
+}
+
+.campus-card img{
+  width: 300px;
+}
+
 span {
   padding-left: 5px;
 }

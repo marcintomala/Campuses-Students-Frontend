@@ -1,25 +1,21 @@
 import React from "react";
-import {
-    BrowserRouter,
-    Route,
-    Switch,
-    Link
-} from "react-router-dom";
+import { HashRouter, Route, Routes,} from "react-router-dom";
+import Home from "./components/Home";
 import './App.css';
+import Campuses from "./components/Campuses";
 
 function App() {
   return (
-      <BrowserRouter>
-          <div>
-              <nav>
-                  <div className="Links">
-                      <span className="Home"><Link to="/">Home</Link></span>
-                      <span className="Students"><Link to="/students">Students</Link></span>
-                      <span className="Campuses"><Link to="/campuses">Campuses</Link></span>
-                  </div>
-              </nav>
-          </div>
-      </BrowserRouter>
+    <div className='app'>
+    <HashRouter>
+      <Routes>
+        <Route exact path="/" element={<Home />} >
+          <Route exact path="campuses" element={<Campuses/>} />
+          <Route path="students" />
+        </Route>
+      </Routes>
+    </HashRouter>
+  </div>
   );
 }
 
