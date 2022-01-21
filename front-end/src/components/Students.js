@@ -12,14 +12,15 @@ export default function Students() {
 
     async function deleteStudent(id) {
         await axios.delete('https://ttp-college-db.herokuapp.com/students/' + id);
-        fetchStudents();
+        await fetchStudents();
     }
 
     async function fetchStudents () {
-        await axios.get('https://ttp-college-db.herokuapp.com/students');
-        setStudents(students.data.map(student => <StudentCard key={student.id} student={student} delete={deleteStudent} />));
+        const students = await axios.get('https://ttp-college-db.herokuapp.com/students');
+        if(students) {
+            setStudents(students.data.map(student => <StudentCard key={student.id} student={student} delete={deleteStudent} />));
+        }
     }
-
 
     return(
         <div className="students-view">

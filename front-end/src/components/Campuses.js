@@ -17,7 +17,9 @@ export default function Campuses() {
 
     async function fetchCampuses () {
         const campuses = await axios.get('https://ttp-college-db.herokuapp.com/campuses');
-        setCampuses(campuses.data.map(campus => <CampusCard key={campus.id} campus={campus} delete={deleteCampus} />));
+        if(campuses) {
+            setCampuses(campuses.data.map(campus => <CampusCard key={campus.id} campus={campus} delete={deleteCampus} />));
+        }
     }
 
     return(
