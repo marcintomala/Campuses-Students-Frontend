@@ -22,6 +22,21 @@ export default function Students() {
         }
     }
 
+    if (students.length === 0) {
+        return (
+            <div className="students-view">
+            <h1>Here are all the students!</h1>
+            <p>There are no students registered in the database.</p>
+            <Link 
+                to={`/students/add`} 
+                className='nav-link'
+            >
+                Add Student
+            </Link>
+        </div>
+        )
+    }
+
     return(
         <div className="students-view">
             <h1>Here are all the students!</h1>

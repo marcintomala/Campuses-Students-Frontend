@@ -22,6 +22,21 @@ export default function Campuses() {
         }
     }
 
+    if (campuses.length === 0) {
+        return (
+            <div className="campuses-view">
+            <h1>Here are all the campuses!</h1>
+            <p>There are no campuses registered in the database.</p>
+            <Link 
+                to={`/campuses/add`} 
+                className='nav-link'
+            >
+                Add Campus
+            </Link>
+        </div>
+        )
+    }
+
     return(
         <div className="campuses-view">
             <h1>Here are all the campuses!</h1>
