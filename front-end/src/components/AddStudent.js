@@ -38,13 +38,19 @@ export default function AddStudent() {
                 Last Name:<input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
             </label>
             <label>
-                Image URL:<input type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
+                Image URL (*.png,*.jpg,*.gif):
+                <input 
+                    type="URL" 
+                    pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif)" 
+                    value={imageUrl} 
+                    onChange={(e) => setImageUrl(e.target.value)} 
+                />
             </label>
             <label>
-                Email:<input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+                Email:<input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </label>
             <label>
-                GPA:<input type="number" value={gpa} onChange={(e) => setGpa(Number(e.target.value))} />
+                GPA:<input type="number" min="0" max="4" step="0.1" value={gpa} onChange={(e) => setGpa(Number(e.target.value))} />
             </label>
             <input type="submit" value="Submit" />
         </form>

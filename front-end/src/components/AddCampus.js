@@ -30,7 +30,13 @@ export default function AddCampus() {
                 Name: <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
             </label>
             <label>
-                Image URL: <input type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
+                Image URL (*.png,*.jpg,*.gif):
+                <input 
+                    type="URL"
+                    pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif)"  
+                    value={imageUrl} 
+                    onChange={(e) => setImageUrl(e.target.value)} 
+                />
             </label>
             <label>
                 Address: <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />

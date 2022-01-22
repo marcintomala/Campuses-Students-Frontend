@@ -8,12 +8,12 @@
   flex-wrap: wrap;
 } */
 
-.campus-card {
+.campus-card, .student-card {
   width: 500px;
   margin: 20px;
 }
 
-.campus-card img{
+.campus-card img, .student-card img{
   width: 300px;
 }
 
