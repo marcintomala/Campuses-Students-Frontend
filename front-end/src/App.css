@@ -25,9 +25,14 @@
 }
 
 .campuses-view {
+  text-align: center;
+}
+
+.campuses-view-campus-cards {
   display: flex;
   flex-wrap: wrap;
 }
+
 
 .campus-card {
   width: 500px;
@@ -36,6 +41,21 @@
 
 .campus-card img{
   width: 300px;
+}
+
+.campus-card h1{
+  width: 300px;
+  color: black;
+}
+
+.student-card {
+  width: 500px;
+  margin: 20px;
+}
+
+.student-card img{
+  height: 200px;
+  width: 200px;
 }
 
 span {

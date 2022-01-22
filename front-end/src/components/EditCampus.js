@@ -110,7 +110,7 @@ export default function EditCampus() {
             <input type="submit" value="Submit" />
             <button type="button" name="Cancel" onClick={() => navigate(origin)}>Cancel</button>
             <StudentDropdown otherStudents={otherStudents} students={students} studentSet={studentSet} />
-            {students && Object.keys(students).map(key => <StudentCard key={students[key].id} student={students[key]} delete={deleteStudentFromCampus} />)}
+            {students && Object.keys(students).map(key => <StudentCard className={'edit-campus-student-card'} key={students[key].id} student={students[key]} delete={deleteStudentFromCampus} />)}
         </form>
     )
 }

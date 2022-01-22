@@ -73,7 +73,7 @@ export default function EditStudent() {
             <label>
                 GPA:<input type="number" value={gpa} onChange={(e) => setGpa(Number(e.target.value))} />
             </label>
-            {campusId && <CampusCard key={currentCampus.id} campus={currentCampus} />}
+            {campusId && <CampusCard className={'edit-student-campus-card'} key={currentCampus.id} campus={currentCampus} />}
             {campusId && <button type="button" onClick={e => { setCampusId(null); setCurrentCampus(""); }}>Remove From Current Campus</button>}
             {!campusId && <CampusDropdown campusSet={campusSet} />}
             <input type="submit" value="Submit" />

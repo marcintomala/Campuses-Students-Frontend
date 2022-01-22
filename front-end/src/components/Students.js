@@ -32,10 +32,6 @@ export default function Students() {
     //students.data.map(student => <StudentCard key={student.id} student={student} delete={deleteStudent} />)
     return (
         <div className="students-view">
-            <h1>Here are all the students!</h1>
-            <div className="student-cards">
-                {Object.keys(students).map(key => <StudentCard key={students[key].id} student={students[key]} delete={deleteStudent} />)}
-            </div>
             <Link 
                 to={`/students/add`} 
                 className='button-link'
@@ -44,6 +40,11 @@ export default function Students() {
                     Add Student
                 </button>
             </Link>
+            <div className="student-cards">
+                {Object.keys(students).length > 0 && <h1>Here are all the students!</h1>}
+                {Object.keys(students).length === 0 && <h1>The are currently no students in the database :(</h1>}
+                {students && Object.keys(students).map(key => <StudentCard className={'students-view-student-card'} key={students[key].id} student={students[key]} delete={deleteStudent} />)}
+            </div>
         </div>
     )
 }

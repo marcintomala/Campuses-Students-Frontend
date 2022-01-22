@@ -32,10 +32,7 @@ export default function Campuses() {
 
     return(
         <div className="campuses-view">
-            <h1>Here are all the campuses!</h1>
-            <div className="campus-cards">
-                {Object.keys(campuses).map(key => <CampusCard key={campuses[key].id} campus={campuses[key]} delete={deleteCampus} />)}
-            </div>
+            {Object.keys(campuses).length > 0 && <h1>Here are all the campuses!</h1>}
             <Link 
                 to={`/campuses/add`} 
                 className='button-link'
@@ -44,6 +41,9 @@ export default function Campuses() {
                     Add Campus
                 </button>
             </Link>
+            <div className="campuses-view-campus-cards">
+                {Object.keys(campuses).length > 0 && Object.keys(campuses).map(key => <CampusCard className={'campuses-view-campus-card'} key={campuses[key].id} campus={campuses[key]} delete={deleteCampus} />)}
+            </div>
         </div>
     )
 }

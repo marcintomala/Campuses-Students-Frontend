@@ -67,7 +67,7 @@ export default function Student() {
                 </button>
             </Link>
             <button name="delete" value="delete" onClick={ async () => await deleteStudent() }>Delete</button>
-            {campus && <CampusCard key={campus.id} campus={campus} />}
+            {campus && <CampusCard className={'student-view-campus-card'} key={campus.id} campus={campus} />}
         </div>
     )
 }

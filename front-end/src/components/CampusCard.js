@@ -16,8 +16,6 @@ export default function CampusCard(props) {
         <div className="campus-card">
             <img src={campus.imageUrl} alt={`${campus.name}`} />
             {link(`/campuses/${campus.id}`, <h1>{campus.name}</h1>)}
-            <h3>{campus.address}</h3>
-            <p>{campus.description}</p>
             {origin.startsWith('/campuses') && <button name="delete" value="delete" onClick={async () => await props.delete(campus.id)}>Delete</button>}
         </div>
     )

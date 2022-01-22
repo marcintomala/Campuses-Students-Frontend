@@ -68,7 +68,9 @@ export default function Campus() {
             <h1>{campus.name}</h1>
             {link(`/campuses/${campus.id}/edit`, <button type="button">Edit Campus</button>)}
             <button name="delete" value="delete" onClick={ async () => await deleteCampus() }>Delete</button>
-            {students && Object.keys(students).map(key => <StudentCard key={students[key].id} student={students[key]} delete={deleteStudentFromCampus} />)}
+            <div className='campus-view-student-cards'>
+                {students && Object.keys(students).map(key => <StudentCard className={'campus-view-student-card'} key={students[key].id} student={students[key]} delete={deleteStudentFromCampus} />)}
+            </div>
         </div>
     )
 }
