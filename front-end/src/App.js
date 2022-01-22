@@ -8,23 +8,27 @@ import EditStudent from "./components/EditStudent";
 import AddStudent from "./components/AddStudent"
 import EditCampus from "./components/EditCampus";
 import AddCampus from "./components/AddCampus";
+import Student from "./components/Student";
+import Campus from "./components/Campus";
 
 function App() {
   return (
     <div className='app'>
-    <HashRouter>
-      <Routes>
-        <Route exact path="/" element={<Home />} >
-          <Route path="students" element={<Students />} />
-          <Route path="students/add" element={<AddStudent />} />
-          <Route path="students/:id/edit" element={<EditStudent />} />
-          <Route path="campuses" element={<Campuses/>} />
-          <Route path="campuses/add" element={<AddCampus />} />
-          <Route path="campuses/:id/edit" element={<EditCampus />} />
-        </Route>
-      </Routes>
-    </HashRouter>
-  </div>
+      <HashRouter>
+        <Routes>
+          <Route exact path="/" element={<Home />} >
+            <Route exact path="students" element={<Students />} />
+            <Route exact path="students/add" element={<AddStudent />} />
+            <Route exact path="students/:id" element={<Student />} />
+            <Route exact path="students/:id/edit" element={<EditStudent />} />
+            <Route exact path="campuses" element={<Campuses/>} />
+            <Route exact path="campuses/add" element={<AddCampus />} />
+            <Route exact path="campuses/:id" element={<Campus />} />
+            <Route exact path="campuses/:id/edit" element={<EditCampus />} />
+          </Route>
+        </Routes>
+      </HashRouter>
+    </div>
   );
 }
 

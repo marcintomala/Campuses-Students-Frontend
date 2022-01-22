@@ -12,13 +12,21 @@ export default function Campuses() {
 
     async function deleteCampus(id) {
         await axios.delete('https://ttp-college-db.herokuapp.com/campuses/' + id);
-        await fetchCampuses();
+        setCampuses(prevCampuses => {
+            const newCampuses = {...prevCampuses};
+            delete newCampuses[id];
+            return newCampuses;
+        })
     }
 
-    async function fetchCampuses () {
-        const campuses = await axios.get('https://ttp-college-db.herokuapp.com/campuses');
-        if(campuses) {
-            setCampuses(campuses.data.map(campus => <CampusCard key={campus.id} campus={campus} delete={deleteCampus} />));
+    async function fetchCampuses() {
+        const response = await axios.get('https://ttp-college-db.herokuapp.com/campuses');
+        const campuses = {};
+        for (let i = 0; i < response.data.length; i++) {
+            campuses[response.data[i].id] = response.data[i];
+        }
+        if (campuses) {
+            setCampuses(campuses);
         }
     }
 
@@ -26,13 +34,15 @@ export default function Campuses() {
         <div className="campuses-view">
             <h1>Here are all the campuses!</h1>
             <div className="campus-cards">
-                {campuses}
+                {Object.keys(campuses).map(key => <CampusCard key={campuses[key].id} campus={campuses[key]} delete={deleteCampus} />)}
             </div>
             <Link 
                 to={`/campuses/add`} 
-                className='nav-link'
+                className='button-link'
             >
-                Add Campus
+                <button type="button">
+                    Add Campus
+                </button>
             </Link>
         </div>
     )

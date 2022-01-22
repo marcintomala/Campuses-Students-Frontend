@@ -1,23 +1,24 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 export default function CampusCard(props) {
     const campus = props.campus;
-    
+    const location = useLocation();
+    origin = location.pathname;
+    console.log(campus);
+
+    function link(to, contents) {
+        return (<Link to={to} state={{ campus : campus, origin : '/campuses' }} 
+                    className='nav-link'> {contents} </Link>)
+    }
+
     return (
         <div className="campus-card">
             <img src={campus.imageUrl} alt={`${campus.name}`} />
-            <h1>{campus.name}</h1>
+            {link(`/campuses/${campus.id}`, <h1>{campus.name}</h1>)}
             <h3>{campus.address}</h3>
             <p>{campus.description}</p>
-            <Link 
-                to={`/campuses/${campus.id}/edit`} 
-                state={{ campus : campus, origin : '/campuses' }} 
-                className='nav-link'
-            >
-                Edit Campus
-            </Link>
-            <button name="delete" value="delete" onClick={async () => await props.delete(campus.id)}>Delete</button>
+            {origin.startsWith('/campuses') && <button name="delete" value="delete" onClick={async () => await props.delete(campus.id)}>Delete</button>}
         </div>
     )
 }

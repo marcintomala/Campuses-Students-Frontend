@@ -12,27 +12,37 @@ export default function Students() {
 
     async function deleteStudent(id) {
         await axios.delete('https://ttp-college-db.herokuapp.com/students/' + id);
-        await fetchStudents();
+        setStudents(prevStudents => {
+            const newStudents = {...prevStudents};
+            delete newStudents[id];
+            return newStudents;
+        })
     }
 
-    async function fetchStudents () {
-        const students = await axios.get('https://ttp-college-db.herokuapp.com/students');
-        if(students) {
-            setStudents(students.data.map(student => <StudentCard key={student.id} student={student} delete={deleteStudent} />));
+    async function fetchStudents() {
+        const response = await axios.get('https://ttp-college-db.herokuapp.com/students');
+        const students = {};
+        for (let i = 0; i < response.data.length; i++) {
+            students[response.data[i].id] = response.data[i];
+        }
+        if (students) {
+            setStudents(students);
         }
     }
-
-    return(
+    //students.data.map(student => <StudentCard key={student.id} student={student} delete={deleteStudent} />)
+    return (
         <div className="students-view">
             <h1>Here are all the students!</h1>
-            <div className="campus-cards">
-                {students}
+            <div className="student-cards">
+                {Object.keys(students).map(key => <StudentCard key={students[key].id} student={students[key]} delete={deleteStudent} />)}
             </div>
             <Link 
                 to={`/students/add`} 
-                className='nav-link'
+                className='button-link'
             >
-                Add Student
+                <button type="button">
+                    Add Student
+                </button>
             </Link>
         </div>
     )
