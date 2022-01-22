@@ -7,9 +7,12 @@ export default function CampusCard(props) {
     return (
         <div className="campus-card">
             <img src={campus.imageUrl} alt={`${campus.name}`} />
-            <h1>{campus.name}</h1>
-            <h3>{campus.address}</h3>
-            <p>{campus.description}</p>
+            <Link
+                to={`/campuses/${campus.id}`}
+                state={{campus : campus, origin : '/campuses'}}
+            >
+                <h1>{campus.name}</h1>
+            </Link>
             <Link 
                 to={`/campuses/${campus.id}/edit`} 
                 state={{ campus : campus, origin : '/campuses' }} 
