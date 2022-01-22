@@ -109,3 +109,44 @@ label {
 .edit-link {
   font-size: 18px;
 }
+
+.edit-button {
+  background-color: green;
+  color: black;
+  border: 0;
+  font-size: 18px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 0px;
+  float: right;
+  margin-right: 10px;
+}
+
+.campus-delete-button, .student-delete-button {
+  background-color: #d65e53;
+  color: black;
+  border: 0;
+  font-size: 18px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 0px;
+  float: right; 
+  clear: both;
+}
+
+.campusProfile, .studentProfile {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.studentProfile img{
+  width: 400px;
+  height:400px;
+  float: left;
+}
+
+.campusProfile img{
+  width: 600px;
+  height: 400px;
+  float: left;
+}

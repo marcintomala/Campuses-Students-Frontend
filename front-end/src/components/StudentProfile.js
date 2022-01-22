@@ -12,19 +12,21 @@ export default function StudentProfile(props){
         await axios.delete('https://ttp-college-db.herokuapp.com/students/' + id);
     }
     return(
-        <div className = "studentProfile">
-            <img src={student.imageUrl} alt={`${student.name}`} />
-            <h1>{student.firstName} {student.lastName}</h1>
-            <h3>Email : {student.email}</h3>
-            <p>GPA : {student.gpa}</p>
+        <div className = "whole-student">
+            <div className = "studentProfile">
+                <img src={student.imageUrl} alt={`${student.name}`} />
+                <h1>{student.firstName} {student.lastName}</h1>
+                <h3>Email : {student.email}</h3>
+                <p>GPA : {student.gpa}</p>
+            </div>
+            <button className = "student-delete-button" name="delete" value="delete" onClick={async () => {await deleteStudent(student.id); navigate(origin)}}>Delete </button>
             <Link 
                 to={`/students/${student.id}/edit`} 
                 state={{ student : student, origin : '/students' }} 
                 className='nav-link'
             >
-                Edit Student
-            </Link>
-            <button name="delete" value="delete" onClick={async () => {await deleteStudent(student.id); navigate(origin)}}>Delete </button>
+                <button className="edit-button">Edit</button>
+            </Link>        
         </div>
     )
 }

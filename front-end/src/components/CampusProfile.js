@@ -11,20 +11,21 @@ export default function CampusProfile(){
         await axios.delete('https://ttp-college-db.herokuapp.com/campuses/' + id);
     }
     return(
-        <div className = "campusProfile">
-            <img src={campus.imageUrl} alt={`${campus.name}`} />
-            <h1>{campus.name}</h1>
-            <h3>{campus.address}</h3>
-            <p>{campus.description}</p>
+        <div className = "whole-campus">
+            <div className = "campusProfile">
+                <img src={campus.imageUrl} alt={`${campus.name}`} />
+                <h1>{campus.name}</h1>
+                <h3>{campus.address}</h3>
+                <p>{campus.description}</p>
+            </div>
+            <button className = "campus-delete-button" name="delete" value="delete" onClick={async () => {await deleteCampus(campus.id); navigate(origin)}}>Delete </button>
             <Link 
                 to={`/campuses/${campus.id}/edit`} 
                 state={{ campus : campus, origin : '/campuses' }} 
                 className='nav-link'
             >
-                Edit Campus
-            </Link>
-
-            <button name="delete" value="delete" onClick={async () => {await deleteCampus(campus.id); navigate(origin)}}>Delete </button>
+                <button className="edit-button">Edit</button>
+            </Link>        
         </div>
     )
 }
