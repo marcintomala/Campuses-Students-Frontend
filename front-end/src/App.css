@@ -1,13 +1,10 @@
-.Campuses, .Students {
-  float: right;
-  padding-right: 5px;
-}
-
 .campus-card, .student-card {
   width: 300px;
   background-color: darkgrey;
   padding: 15px;
   margin-bottom: 10px;
+  margin-right: 10px;
+  display: inline-block;
 }
 
 .campus-card img, .student-card img{
