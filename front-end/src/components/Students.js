@@ -24,14 +24,14 @@ export default function Students() {
 
     if (students.length === 0) {
         return (
-            <div className="students-view">
-            <h1>Here are all the students!</h1>
+            <div className="no-students-view">
+            <h1>All Students</h1>
             <p>There are no students registered in the database.</p>
             <Link 
                 to={`/students/add`} 
-                className='nav-link'
+                className='add-link'
             >
-                Add Student
+                <button>Add Student</button>
             </Link>
         </div>
         )
@@ -39,15 +39,15 @@ export default function Students() {
 
     return(
         <div className="students-view">
-            <h1>Here are all the students!</h1>
+            <h1>All Students</h1>
             <div className="campus-cards">
                 {students}
             </div>
             <Link 
                 to={`/students/add`} 
-                className='nav-link'
+                className='add-link'
             >
-                Add Student
+                <button>Add Student</button>
             </Link>
         </div>
     )

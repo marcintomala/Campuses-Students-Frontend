@@ -12,16 +12,16 @@ export default function StudentCard(props) {
                 to ={`/students/${student.id}`}
                 state={{ student : student, origin : '/students'}} 
             >
-                <h1>{student.firstName} {student.lastName}</h1>
+                <h1 className="student-name">{student.firstName} {student.lastName}</h1>
             </Link>
             <Link 
                 to={`/students/${student.id}/edit`} 
                 state={{ student : student, origin : '/students' }} 
-                className='nav-link'
+                className='edit-link'
             >
                 Edit Student
             </Link>
-            <button name="delete" value="delete" onClick={async () => await props.delete(student.id)}>Delete</button>
+            <button className="delete-button" name="delete" value="delete" onClick={async () => await props.delete(student.id)}>Delete</button>
         </div>
     )
 }

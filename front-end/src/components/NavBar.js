@@ -7,9 +7,9 @@ export default function NavBar () {
             <nav className='navbar'>
             <h1 className='nav-title'>Campus Student CRUD</h1>
                 <div className='nav-links'>
-                    <Link to="/" className='nav-link'>Home</Link>
-                    <Link to="/campuses" className='nav-link'>Campuses</Link>
-                    <Link to="/students" className='nav-link'>Students</Link>
+                    <Link to="/" className='home-link'>Home</Link>
+                    <Link to="/students" className='student-link'>Students</Link>
+                    <Link to="/campuses" className='campus-link'>Campuses</Link>
                 </div>
             </nav>
         </div>

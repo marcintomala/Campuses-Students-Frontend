@@ -24,7 +24,7 @@ export default function EditStudent() {
     
     let navigate = useNavigate();
     return (
-        <form className='edit-student-form' 
+        <form className='add-student-form' 
             onSubmit={async e => {
                     e.preventDefault();
                     await editStudent();
@@ -32,13 +32,16 @@ export default function EditStudent() {
                 }
             }>
             <label>
-                First Name:<input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                First Name: <br></br><input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
             </label>
+            <br></br>
             <label>
-                Last Name:<input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                Last Name: <br></br><input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
             </label>
+            <br></br>
             <label>
                 Image URL (*.png,*.jpg,*.gif):
+                <br></br>
                 <input 
                     type="URL"
                     pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif)"  
@@ -46,13 +49,16 @@ export default function EditStudent() {
                     onChange={(e) => setImageUrl(e.target.value)} 
                 />
             </label>
+            <br></br>
             <label>
-                Email:<input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                Email: <br></br><input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </label>
+            <br></br>
             <label>
-                GPA:<input type="number" min="0" max="4" step="0.1" value={gpa} onChange={(e) => setGpa(Number(e.target.value))} />
+                GPA: <br></br><input type="number" min="0" max="4" step="0.1" value={gpa} onChange={(e) => setGpa(Number(e.target.value))} />
             </label>
-            <input type="submit" value="Submit" />
+            <br></br>
+            <input className = "submit-button" type="submit" value="Submit" />
         </form>
     )
 }

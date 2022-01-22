@@ -27,10 +27,12 @@ export default function AddCampus() {
                 }
             }>
             <label>
-                Name: <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                Campus Name: <br></br><input type="text" value={name} onChange={(e) => setName(e.target.value)} />
             </label>
+            <br></br>
             <label>
                 Image URL (*.png,*.jpg,*.gif):
+                <br></br>
                 <input 
                     type="URL"
                     pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif)"  
@@ -38,13 +40,16 @@ export default function AddCampus() {
                     onChange={(e) => setImageUrl(e.target.value)} 
                 />
             </label>
+            <br></br>
             <label>
-                Address: <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+                Address: <br></br><input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
             </label>
+            <br></br>
             <label>
-                Description: <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+                Description: <br></br><input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
             </label>
-            <input type="submit" value="Submit" />
+            <br></br>
+            <input className="submit-button" type="submit" value="Submit" />
         </form>
     )
 }

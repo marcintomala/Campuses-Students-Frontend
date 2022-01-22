@@ -11,16 +11,16 @@ export default function CampusCard(props) {
                 to={`/campuses/${campus.id}`}
                 state={{campus : campus, origin : '/campuses'}}
             >
-                <h1>{campus.name}</h1>
+                <h1 className="campus-name">{campus.name}</h1>
             </Link>
             <Link 
                 to={`/campuses/${campus.id}/edit`} 
                 state={{ campus : campus, origin : '/campuses' }} 
-                className='nav-link'
+                className='edit-link'
             >
                 Edit Campus
             </Link>
-            <button name="delete" value="delete" onClick={async () => await props.delete(campus.id)}>Delete</button>
+            <button className = "delete-button" name="delete" value="delete" onClick={async () => await props.delete(campus.id)}>Delete</button>
         </div>
     )
 }

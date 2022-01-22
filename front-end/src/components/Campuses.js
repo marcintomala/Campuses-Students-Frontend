@@ -24,14 +24,14 @@ export default function Campuses() {
 
     if (campuses.length === 0) {
         return (
-            <div className="campuses-view">
-            <h1>Here are all the campuses!</h1>
+        <div className="no-campuses-view">
+            <h1>All Campuses</h1>
             <p>There are no campuses registered in the database.</p>
             <Link 
                 to={`/campuses/add`} 
-                className='nav-link'
+                className='add-link'
             >
-                Add Campus
+                <button>Add Campus</button>
             </Link>
         </div>
         )
@@ -39,15 +39,15 @@ export default function Campuses() {
 
     return(
         <div className="campuses-view">
-            <h1>Here are all the campuses!</h1>
+            <h1>All Campuses</h1>
             <div className="campus-cards">
                 {campuses}
             </div>
             <Link 
                 to={`/campuses/add`} 
-                className='nav-link'
+                className='add-link'
             >
-                Add Campus
+                <button>Add Campus</button>
             </Link>
         </div>
     )

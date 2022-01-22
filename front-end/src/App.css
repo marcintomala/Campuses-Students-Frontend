@@ -3,14 +3,11 @@
   padding-right: 5px;
 }
 
-/* .campuses-view {
-  display: flex;
-  flex-wrap: wrap;
-} */
-
 .campus-card, .student-card {
-  width: 500px;
-  margin: 20px;
+  width: 300px;
+  background-color: darkgrey;
+  padding: 15px;
+  margin-bottom: 10px;
 }
 
 .campus-card img, .student-card img{
@@ -21,14 +18,94 @@ span {
   padding-left: 5px;
 }
 
-.Links {
-  background-color: darkgray;
-  padding: 5px;
-  width: 500px;
-  margin: auto;
+a {
+  color: black;
+} 
+
+.nav-title {
+  text-align: center;
+  font-size: 50px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.nav-links {
+  font-size: 25px;
+  background-color: darkgrey;
+  padding: 15px;
+}
+
+.campus-link, .student-link {
+  float: right;
+  padding-left: 20px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+.campus-name, .student-name {
+  font-size: 30px;
+  margin-bottom: 50px;
+  margin-top: 0px;
+}
+
+button {
+  background-color: #1AA7EC;
+  color: white;
+  border: 0;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.no-campuses-view, .no-students-view {
+  text-align: center;
+}
+
+p {
+  padding-bottom: 20px;
   font-size: 20px;
 }
 
-a {
+.add-campus-form, .add-student-form {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
+}
+
+input {
+  font-size: 20px;
+  width: 400px;
+  margin-bottom: 5px;
+}
+
+label {
+  font-size: 20px;
+}
+
+.submit-button {
+  margin-top: 10px;
+  width: 100px;
+  background-color: #1AA7EC;
+  color: white;
+  border: 0;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.delete-button {
+  background-color: #d65e53;
   color: black;
+  border: 0;
+  font-size: 18px;
+  padding: 3px;
+  border-radius: 0px;
+  float: right; 
+}
+
+.edit-link {
+  font-size: 18px;
 }
