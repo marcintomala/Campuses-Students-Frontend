@@ -9,7 +9,8 @@ export default function Student() {
     const navigate = useNavigate();
     const location = useLocation();
     const id = Number(params.id);
-    const edit = location.pathname.endsWith('/edit'); 
+    const edit = location.pathname.endsWith('/edit');
+    const placeholderImage = 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
     
     const student = useContext(StudentsContext).students[id];    
     const campus = useContext(CampusesContext).campuses[student.campusId]
@@ -27,7 +28,7 @@ export default function Student() {
     return (
         <>
             {!edit && <div className="student-view">
-                <img src={student.imageUrl} alt={`${student.firstName}`} />
+                <img src={student.imageUrl ? student.imageUrl : placeholderImage} alt={`${student.firstName}`} />
                 <h1>{student.firstName} {student.lastName}</h1>
                 <h3>Email : {student.email}</h3>
                 <p>GPA : {student && gpa}</p>

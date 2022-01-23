@@ -11,6 +11,8 @@ export default function Campus() {
     const location = useLocation();
     const edit = location.pathname.endsWith('/edit'); 
 
+
+    const placeholderImage = 'https://commonlook.com/wp-content/uploads/2019/05/placeholder.jpg'
     const campus = useContext(CampusesContext).campuses[id];
     const dCampus = useContext(CampusesContext).deleteCampus;
     const cStudents = useContext(StudentsContext).getByCampus;
@@ -33,7 +35,7 @@ export default function Campus() {
             {!edit && 
             <div className="campus-view">
                 <h1>{campus.name}</h1>
-                <img src={campus.imageUrl} alt={`${campus.name}`} />
+                <img src={campus.imageUrl ? campus.imageUrl : placeholderImage} alt={`${campus.name}`} />
                 <h3>{campus.address}</h3>
                 <p>{campus.description}</p>
                 {link(`/campuses/${campus.id}/edit`, <button type="button">Edit Campus</button>)}

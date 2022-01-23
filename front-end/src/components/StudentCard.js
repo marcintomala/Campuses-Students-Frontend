@@ -7,13 +7,14 @@ export default function StudentCard(props) {
     const id = student.id;
     const location = useLocation();
     const origin = location.pathname
+    const placeholderImage = 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
 
     const deleteStudent = useContext(StudentsContext).deleteStudent;
     const cCampus = useContext(StudentsContext).changeCampus;
 
     return (
         <div className="student-card">
-            <img src={student.imageUrl} alt={`${student.name}`} />
+            <img src={student.imageUrl ? student.imageUrl : placeholderImage} alt={`${student.name}`} />
             <Link to={`/students/${student.id}`} className='nav-link'><h1>{student.firstName} {student.lastName}</h1></Link>
             {origin === '/students' && <button name="delete" value="delete" onClick={async () => await deleteStudent(student.id)}>Delete</button>}
             {origin.endsWith('/edit') && <button name="delete" value="delete" type="button" 
