@@ -1,33 +1,39 @@
 import React from "react";
-import { HashRouter, Route, Routes,} from "react-router-dom";
-import Home from "./components/Home";
+import { Route, Routes } from "react-router-dom";
 import './App.css';
-import Campuses from "./components/Campuses";
+import Layout from "./components/Layout";
+import Home from "./components/Home";
 import Students from "./components/Students";
+import Student from "./components/Student";
 import EditStudent from "./components/EditStudent";
 import AddStudent from "./components/AddStudent"
+import Campuses from "./components/Campuses";
+import Campus from "./components/Campus";
 import EditCampus from "./components/EditCampus";
 import AddCampus from "./components/AddCampus";
-import Student from "./components/Student";
-import Campus from "./components/Campus";
+import NoMatch from "./components/NoMatch";
 
 function App() {
   return (
     <div className='app'>
-      <HashRouter>
-        <Routes>
-          <Route exact path="/" element={<Home />} >
-            <Route exact path="students" element={<Students />} />
-            <Route exact path="students/add" element={<AddStudent />} />
-            <Route exact path="students/:id" element={<Student />} />
-            <Route exact path="students/:id/edit" element={<EditStudent />} />
-            <Route exact path="campuses" element={<Campuses/>} />
-            <Route exact path="campuses/add" element={<AddCampus />} />
-            <Route exact path="campuses/:id" element={<Campus />} />
-            <Route exact path="campuses/:id/edit" element={<EditCampus />} />
-          </Route>
-        </Routes>
-      </HashRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />}/>
+              <Route path="/students" element={<Students />}>
+                <Route path="/students/:id" element={<Student />}>
+                  <Route path="/students/:id/edit" element={<EditStudent />}/>
+                </Route>
+              </Route>
+              <Route path="students/add" element={<AddStudent />} />
+              <Route path="campuses" element={<Campuses/>}>
+                <Route path=":id" element={<Campus />}>
+                  <Route path="edit" element={<EditCampus />} />
+                </Route>
+              </Route>
+              <Route path="campuses/add" element={<AddCampus />} />
+              <Route path="*" element={<NoMatch />} />
+            </Route>
+          </Routes>
     </div>
   );
 }

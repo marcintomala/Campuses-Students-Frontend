@@ -1,76 +1,53 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams, Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import {  useParams, useNavigate, useLocation, Link, Outlet } from 'react-router-dom';
 import StudentCard from './StudentCard';
+import { CampusesContext } from '../contexts/campusesContext';
+import { StudentsContext } from '../contexts/studentsContext';
 
 export default function Campus() {
     const params = useParams();
-    const location = useLocation();
     const navigate = useNavigate();
-    const [ campus, setCampus ] = useState("");
-    const [ students, setStudents ] = useState("");
+    const id = Number(params.id);
+    const location = useLocation();
+    const edit = location.pathname.endsWith('/edit'); 
 
-    useEffect(() => {
-        if (!location.state) {
-            fetchCampus();
-            getStudents();
-        } else {
-            setCampus(location.state.campus);
-            getStudents();
-        }
-    }, [])
+    const campus = useContext(CampusesContext).campuses[id];
+    const dCampus = useContext(CampusesContext).deleteCampus;
+    const cStudents = useContext(StudentsContext).getByCampus;
+    const campusStudents = getStudents();
 
-    async function deleteCampus() {
-        const response = await axios.delete('https://ttp-college-db.herokuapp.com/campuses/' + campus.id);
-        console.log(response);
-        navigate('/campuses');
+    function deleteCampus() {
+        dCampus(id);
     }
-
-    async function deleteStudentFromCampus (id) {
-        const response = await axios.put('https://ttp-college-db.herokuapp.com/students', {
-            id : id,
-            campusId : null
-        });
-        console.log(response);
-        setStudents(prevStudents => {
-            const newStudents = {...prevStudents}
-            delete newStudents[id]
-            return newStudents;
-        })
+    
+    function getStudents() {
+        return cStudents(id);
     }
-
-    async function fetchCampus() {
-        const response = await axios.get('https://ttp-college-db.herokuapp.com/campuses/' + params.id);
-        const campus = await response.data;
-        if (campus) {
-            setCampus(campus);
-        }
-    }
-
-    async function getStudents() {
-        const response = await axios.get(`https://ttp-college-db.herokuapp.com/campuses/${params.id}/students`);
-        const students = {};
-        for (let i = 0; i < response.data.length; i++) {
-            students[response.data[i].id] = response.data[i];
-        }
-        if (students) {
-            setStudents(students);
-        }
-    }
-
+    
     function link(to, contents) {
-        return (<Link to={to} state={{ campus : campus, students : students, origin : `/campuses/${campus.id}` }} 
-                    className='button-link'> {contents} </Link>)
+        return (<Link to={to} className='button-link'> {contents} </Link>)
     }
 
     return (
-        <div className="campus-view">
-            <h1>{campus.name}</h1>
-            {link(`/campuses/${campus.id}/edit`, <button type="button">Edit Campus</button>)}
-            <button name="delete" value="delete" onClick={ async () => await deleteCampus() }>Delete</button>
-            <div className='campus-view-student-cards'>
-                {students && Object.keys(students).map(key => <StudentCard className={'campus-view-student-card'} key={students[key].id} student={students[key]} delete={deleteStudentFromCampus} />)}
-            </div>
-        </div>
+        <>
+            {!edit && 
+            <div className="campus-view">
+                <h1>{campus.name}</h1>
+                <img src={campus.imageUrl} alt={`${campus.name}`} />
+                <h3>{campus.address}</h3>
+                <p>{campus.description}</p>
+                {link(`/campuses/${campus.id}/edit`, <button type="button">Edit Campus</button>)}
+                <button name="delete" value="delete" onClick={() => {
+                    navigate('/campuses'); 
+                    deleteCampus();
+                }}>Delete</button>
+                <div className='campus-view-student-cards'>
+                    {!campusStudents && <h1>No students are associated with this campus.</h1>}
+                    {campusStudents && <h1>Students associated with this campus:</h1>}
+                    {campusStudents && Object.keys(campusStudents).map(key => <StudentCard className={'campus-view-student-card'} key={campusStudents[key].id} student={campusStudents[key]} />)}
+                </div>
+            </div>}
+            {edit && <Outlet />}
+        </>
     )
 }

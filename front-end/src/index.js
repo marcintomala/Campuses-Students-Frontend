@@ -3,10 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import CampusesProvider from './contexts/campusesContext';
+import StudentsProvider from './contexts/studentsContext'
+import { HashRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CampusesProvider>
+      <StudentsProvider>
+        <HashRouter>
+          <App />
+        </HashRouter>  
+      </StudentsProvider>
+    </CampusesProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

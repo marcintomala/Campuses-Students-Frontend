@@ -1,61 +1,45 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from 'react-router-dom'
-import axios from "axios";
-import CampusDropdown from "./CampusDropdown";
+import React, { useState, useContext } from "react";
+import { StudentsContext } from "../contexts/studentsContext";
+import { CampusesContext } from "../contexts/campusesContext";
+import { useParams, useNavigate } from "react-router";
 import CampusCard from "./CampusCard";
+import CampusDropdown from "./CampusDropdown"
 
 export default function EditStudent() {
-    const location = useLocation();
-    let navigate = useNavigate();
+    const params = useParams();
+    const id = Number(params.id);
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!location.state) {
-            navigate('/students');
-        }
-        if (student.campusId) {
-            fetchCampus(student.campusId);
-        }
-    }, [])
-
-    const { student, origin } = location.state ? location.state : {student : null, origin : null};
-
-    const [firstName, setFirstName] = useState(student ? student.firstName : "");
-    const [lastName, setLastName] = useState(student ? student.lastName : "");
-    const [imageUrl, setImageUrl] = useState(student ? student.imageUrl : "");
-    const [email, setEmail] = useState(student ? student.email : "");
-    const [gpa, setGpa] = useState(student ? student.gpa : "");
-    const [campusId, setCampusId ] = useState(student ? student.campusId : "");
-    const [currentCampus, setCurrentCampus] = useState("");
-
-    async function fetchCampus(id) {
-        const response = await axios.get('https://ttp-college-db.herokuapp.com/campuses/' + id);
-        const campus = await response.data;
-        setCurrentCampus(campus);
-    }
-
-    async function editStudent() {
-        await axios.put('https://ttp-college-db.herokuapp.com/students', {
-            id : student.id,
-            firstName : firstName,
-            lastName : lastName,
-            imageUrl : imageUrl,
-            email : email,
-            gpa : gpa,
-            campusId : campusId
-        })
-    }
-
-    async function campusSet(id) {
-        setCampusId(id);
-        await fetchCampus(id);
+    const student = useContext(StudentsContext).students[id];
+    const edit = useContext(StudentsContext).editStudent;
+    
+    async function editStudent(student) {
+        await edit(student);
     }
     
+    const [firstName, setFirstName] = useState(student.firstName);
+    const [lastName, setLastName] = useState(student.lastName);
+    const [imageUrl, setImageUrl] = useState(student.imageUrl);
+    const [email, setEmail] = useState(student.email);
+    const [gpa, setGpa] = useState(student.gpa);
+    const [campusId, setCampusId ] = useState(student.campusId);
+    const campus = useContext(CampusesContext).campuses[campusId];
+
     return (
         <form className='edit-student-form' 
             onSubmit={async e => {
                     e.preventDefault();
-                    await editStudent();
-                    navigate(origin);
+                    const student = {
+                        id : id,
+                        firstName : firstName,
+                        lastName : lastName,
+                        imageUrl : imageUrl,
+                        email : email,
+                        gpa : gpa,
+                        campusId : campusId
+                    }
+                    await editStudent(student);
+                    navigate(`/students/${id}`);
                 }
             }>
             <label>
@@ -73,11 +57,11 @@ export default function EditStudent() {
             <label>
                 GPA:<input type="number" value={gpa} onChange={(e) => setGpa(Number(e.target.value))} />
             </label>
-            {campusId && <CampusCard className={'edit-student-campus-card'} key={currentCampus.id} campus={currentCampus} />}
-            {campusId && <button type="button" onClick={e => { setCampusId(null); setCurrentCampus(""); }}>Remove From Current Campus</button>}
-            {!campusId && <CampusDropdown campusSet={campusSet} />}
+            {campusId && <CampusCard className={'edit-student-campus-card'} key={campusId} campus={campus} />}
+            {campusId && <button type="button" onClick={e => { setCampusId(null); }}>Remove From Current Campus</button>}
+            {!campusId && <CampusDropdown setCampusId={setCampusId} />}
             <input type="submit" value="Submit" />
-            <button type="button" name="Cancel" onClick={() => navigate(origin)}>Cancel</button>
+            <button type="button" name="Cancel" onClick={() => navigate(`/students/${id}`)}>Cancel</button>
         </form>
     )
 }

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom'
-import axios from "axios";
+import { StudentsContext } from "../contexts/studentsContext";
 
 export default function AddStudent() {
     const [firstName, setFirstName] = useState("");
@@ -8,30 +8,20 @@ export default function AddStudent() {
     const [imageUrl, setImageUrl] = useState("");
     const [email, setEmail] = useState("");
     const [gpa, setGpa] = useState(0)
-    
-    async function addStudent() {
-        if(!imageUrl) {
-            setImageUrl(undefined);
-        }
-        const response = await axios.post('https://ttp-college-db.herokuapp.com/students', {
-            firstName : firstName,
-            lastName : lastName,
-            imageUrl : imageUrl,
-            email : email,
-            gpa : gpa
-        });
-        return response;
+    let navigate = useNavigate();
+
+    const add = useContext(StudentsContext).addStudent;
+
+    async function addNewStudent() {
+        return await add(firstName, lastName, imageUrl, email, gpa);
     }
     
-    let navigate = useNavigate();
     return (
         <form className='add-student-form' 
             onSubmit={ async e => {
                     e.preventDefault();
-                    const newStudent = await addStudent();
-                    console.log(newStudent);
+                    const newStudent = await addNewStudent();
                     const newStudentId = newStudent.data.student.id;
-                    console.log(newStudentId)
                     navigate(`/students/${newStudentId}`);
                 }
             }>
