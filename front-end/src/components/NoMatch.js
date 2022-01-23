@@ -8,6 +8,5 @@ export default function NoMatch() {
             <p>Nothing found under this link :(</p>
             <Link to="/">Go to the home page</Link>
         </div>
-
     )
 }

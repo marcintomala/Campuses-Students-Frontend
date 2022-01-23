@@ -14,12 +14,12 @@ export default function CampusCard(props) {
     }
 
     function link(to, contents) {
-        return (<Link to={to} className='nav-link'> {contents} </Link>)
+        return (<Link to={to} className='nav-link'>{contents}</Link>)
     }
 
     return (
         <div className="campus-card">
-            <img src={campus.imageUrl ? campus.imageUrl : placeholderImage} alt={`${campus.name}`} />
+            <img src={campus?.imageUrl ? campus.imageUrl : placeholderImage} alt={`${campus?.name}`} />
             {link(`/campuses/${campus.id}`, <h1>{campus.name}</h1>)}
             {origin.startsWith('/campuses') && <button name="delete" value="delete" onClick={async () => await deleteCampus(campus.id)}>Delete</button>}
         </div>

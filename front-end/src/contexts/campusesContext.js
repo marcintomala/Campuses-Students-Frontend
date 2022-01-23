@@ -9,7 +9,16 @@ export const CampusesContext = React.createContext({
 });
 
 export default function Campuses(props) {
-    const [ campuses, setCampuses ] = useState("");
+    const placeholderImage = 'https://commonlook.com/wp-content/uploads/2019/05/placeholder.jpg'
+    const [ campuses, setCampuses ] = useState({
+        "-1" : {
+            id: -1, 
+            name: 'Placeholder Campus', 
+            imageUrl: placeholderImage, 
+            address: "1 Nobody Cares, Nowhere, NS, 00000", 
+            desc: "Cool."
+        }
+    });
 
     useEffect(() => {
         fetchCampuses();

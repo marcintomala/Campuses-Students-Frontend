@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import CampusesProvider from './contexts/campusesContext';
 import StudentsProvider from './contexts/studentsContext'
 import { HashRouter } from 'react-router-dom';
+//import 'bootstrap/dist/css/bootstrap.css';
+//import 'bootstrap/dist/css/bootstrap-theme.css';
 
 ReactDOM.render(
   <React.StrictMode>

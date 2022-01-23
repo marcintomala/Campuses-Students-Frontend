@@ -5,5 +5,5 @@ export default function Home() {
         <div className='homepage'>
             <h1>Welcome to the Campuses-Students CRUD App!</h1>  
         </div>
-    )
+    );
 }

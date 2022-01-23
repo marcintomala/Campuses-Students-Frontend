@@ -36,7 +36,7 @@ export default function AddCampus() {
             <label>
                 Description:<input type="text" value={description} onChange={e => setDescription(e.target.value)} />
             </label>
-            <input type="submit" value="Submit" />
+            <input className="submit" type="submit" value="Submit" />
         </form>
     )
 }

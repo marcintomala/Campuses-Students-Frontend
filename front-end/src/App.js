@@ -19,17 +19,13 @@ function App() {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />}/>
-              <Route path="/students" element={<Students />}>
-                <Route path="/students/:id" element={<Student />}>
-                  <Route path="/students/:id/edit" element={<EditStudent />}/>
-                </Route>
-              </Route>
+              <Route path="/students" element={<Students />}/>
+              <Route path="/students/:id" element={<Student />}/>
+              <Route path="/students/:id/edit" element={<EditStudent />}/>
               <Route path="students/add" element={<AddStudent />} />
-              <Route path="campuses" element={<Campuses/>}>
-                <Route path=":id" element={<Campus />}>
-                  <Route path="edit" element={<EditCampus />} />
-                </Route>
-              </Route>
+              <Route path="campuses" element={<Campuses/>}/>
+              <Route path="/campuses/:id" element={<Campus />}/>
+              <Route path="/campuses/:id/edit" element={<EditCampus />} />
               <Route path="campuses/add" element={<AddCampus />} />
               <Route path="*" element={<NoMatch />} />
             </Route>

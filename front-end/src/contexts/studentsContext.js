@@ -11,7 +11,17 @@ export const StudentsContext = React.createContext({
 });
 
 export default function Students(props) {
-    const [ students, setStudents ] = useState("");
+    const placeholderImage = 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
+    const [ students, setStudents ] = useState(
+        {"-1": {
+            id: -1, 
+            firstName: "Placeholder", 
+            lastName: "Student",
+            imageUrl: placeholderImage, 
+            email: 'example@mail.com', 
+            gpa: 4.0, 
+            campusId: "-1"}
+        });
 
     useEffect(() => {
         fetchStudents();

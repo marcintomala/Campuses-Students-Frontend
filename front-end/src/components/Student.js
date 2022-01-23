@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useParams, useNavigate, useLocation, Link, Outlet } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import CampusCard from './CampusCard';
 import { StudentsContext } from '../contexts/studentsContext';
 import { CampusesContext } from '../contexts/campusesContext';
@@ -7,14 +7,15 @@ import { CampusesContext } from '../contexts/campusesContext';
 export default function Student() {
     const params = useParams();
     const navigate = useNavigate();
-    const location = useLocation();
     const id = Number(params.id);
-    const edit = location.pathname.endsWith('/edit');
-    const placeholderImage = 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
+    const placeholderImage = 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png';
+    const placeholderStudent = useContext(StudentsContext)?.students[-1];
+    const studentsContext = useContext(StudentsContext)?.students[id];
     
-    const student = useContext(StudentsContext).students[id];    
-    const campus = useContext(CampusesContext).campuses[student.campusId]
+    const student = studentsContext ? studentsContext : placeholderStudent;    
+    const campus = useContext(CampusesContext).campuses[student.campusId];
     const sDelete = useContext(StudentsContext).deleteStudent;
+    const loading = student.id === -1;
 
     async function deleteStudent() {
         await sDelete(id);
@@ -27,24 +28,31 @@ export default function Student() {
 
     return (
         <>
-            {!edit && <div className="student-view">
-                <img src={student.imageUrl ? student.imageUrl : placeholderImage} alt={`${student.firstName}`} />
-                <h1>{student.firstName} {student.lastName}</h1>
-                <h3>Email : {student.email}</h3>
-                <p>GPA : {student && gpa}</p>
-                <Link to={`/students/${student.id}/edit`} className='button-link'>
-                    <button type="button">
-                        Edit Student
-                    </button>
-                </Link>
-                <button name="delete" value="delete" onClick={ async () => {
-                    navigate('/students');
-                    await deleteStudent();
-                }}>Delete</button>
-                {!campus && <h1>This student does not have a campus :(</h1>}
-                {campus && <CampusCard className={'student-view-campus-card'} key={campus.id} campus={campus} />}
+            {!loading && 
+            <div className="student-view">
+                <div className='student-view-left'>
+                    <img src={student.imageUrl ? student.imageUrl : placeholderImage} alt={`${student.firstName}`} />
+                    <div className='student-buttons'>
+                        <Link to={`/students/${student.id}/edit`} className='button-link'><button type="button">Edit Student</button></Link>
+                        <button name="delete" value="delete" onClick={ async () => {
+                            navigate('/students');
+                            await deleteStudent();
+                        }}>Delete Student</button>
+                        <Link to={`/students`} className='button-link'><button type="button">Return to Students</button></Link>
+                    </div>
+                </div>
+                <div className='student-info'>
+                    <h1>{student.firstName} {student.lastName}</h1>
+                    <h3>Email : {student.email}</h3>
+                    <p>GPA : {student && gpa}</p>
+                </div>
+                {!campus && <h1 className='student-campus'>This student does not have a campus :(</h1>}
+                {campus && 
+                <div className='student-campus'>
+                    <h3>{student.firstName}'s current campus:</h3>
+                    <CampusCard className={'student-view-campus-card'} key={campus.id} campus={campus} />
+                </div>}
             </div>}
-            {edit && <Outlet />}
         </>
         
     )

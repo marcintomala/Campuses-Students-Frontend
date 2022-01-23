@@ -6,18 +6,20 @@ export default function StudentCard(props) {
     const student = props.student;
     const id = student.id;
     const location = useLocation();
-    const origin = location.pathname
-    const placeholderImage = 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
+    const path = location.pathname;
+    const placeholderImage = 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png';
+    
+    let cardClass = path.startsWith('/students') ? 'student-card' : 'campus-students-card';
 
     const deleteStudent = useContext(StudentsContext).deleteStudent;
     const cCampus = useContext(StudentsContext).changeCampus;
 
     return (
-        <div className="student-card">
+        <div className={cardClass}>
             <img src={student.imageUrl ? student.imageUrl : placeholderImage} alt={`${student.name}`} />
-            <Link to={`/students/${student.id}`} className='nav-link'><h1>{student.firstName} {student.lastName}</h1></Link>
-            {origin === '/students' && <button name="delete" value="delete" onClick={async () => await deleteStudent(student.id)}>Delete</button>}
-            {origin.endsWith('/edit') && <button name="delete" value="delete" type="button" 
+            <Link to={`/students/${student.id}`} className='nav-link'><h2>{student.firstName} {student.lastName}</h2></Link>
+            {path === '/students' && <button name="delete" value="delete" onClick={async () => await deleteStudent(student.id)}>Delete</button>}
+            {path.endsWith('/edit') && <button name="delete" value="delete" type="button" 
                 onClick={() => {
                     cCampus(student.id, null);
                     props.setStudents(prevStudents => {
