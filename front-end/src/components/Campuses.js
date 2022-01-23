@@ -10,6 +10,7 @@ export default function Campuses() {
     return(
         <>
             {!loading && <div className="campuses-view">
+                {Object.keys(campuses).length === 0 && <h1>There are currently no campuses in the database :(</h1>}
                 {Object.keys(campuses).length > 0 && <h1>Here are all the campuses!</h1>}
                 <Link to={`/campuses/add`} className='button-link'><button type="button">Add Campus</button></Link>
                 <div className="campuses-view-campus-cards">

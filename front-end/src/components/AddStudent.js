@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import { StudentsContext } from "../contexts/studentsContext";
+import ErrorDisplay from "./ErrorDisplay";
 
 export default function AddStudent() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [imageUrl, setImageUrl] = useState("");
-    const [email, setEmail] = useState({email: "", valid: false});
+    const [email, setEmail] = useState("");
     const [gpa, setGpa] = useState(0)
     let navigate = useNavigate();
 
@@ -15,11 +16,32 @@ export default function AddStudent() {
     async function addNewStudent() {
         return await add(firstName, lastName, imageUrl, email.email, gpa);
     }
-    
-    function validateEmail(email) {
-        console.log(email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i))
-        return email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+
+    let errors;
+    let submitDisabled = true;
+
+    function validate() {
+        errors = {};
+        const isEmailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i); 
+        if (firstName === '') {
+            errors['firstName'] = "First Name cannot be empty."
+        } 
+        if (lastName === '') {
+            errors['lastName'] = "Last Name cannot be empty."
+        } 
+        if (email === '') {
+            errors['email'] = "Email cannot be empty."
+        } else if (!isEmailValid) {
+            errors['email'] = "Email is not in a valid format."
+        } 
+        if (gpa < 0 || gpa > 4 || !gpa) {
+            errors['gpa'] = "Gpa must be a numeric value between 0 and 4."
+        } 
+        if (Object.keys(errors).length === 0) {
+            submitDisabled = false;
+        }
     }
+    validate();
 
     return (
         <form className='add-student-form' 
@@ -30,22 +52,24 @@ export default function AddStudent() {
                     navigate(`/students/${newStudentId}`);
                 }
             }>
+            <h1>Add New Student</h1>    
             <label>
-                First Name:<input type="text" value={firstName} onChange={e => setFirstName(e.target.value)} />
+                First Name: <br></br> <input placeholder='Enter First Name:' type="text" value={firstName} onChange={e => setFirstName(e.target.value)} />
             </label>
             <label>
-                Last Name:<input type="text" value={lastName} onChange={e => setLastName(e.target.value)} />
+                Last Name: <br></br> <input placeholder='Enter Last Name:' type="text" value={lastName} onChange={e => setLastName(e.target.value)} />
             </label>
             <label>
-                Image URL:<input type="text" value={imageUrl} onChange={e => setImageUrl(e.target.value)} />
+                Image URL: <br></br> <input placeholder='Enter Student photo URL:' type="text" value={imageUrl} onChange={e => setImageUrl(e.target.value)} />
             </label>
             <label>
-                Email:<input type="text" value={email.email} onChange={e => setEmail({email: e.target.value, valid: validateEmail(e.target.value)})} />
+                Email: <br></br> <input placeholder='Enter Student Email:' type="text" value={email} onChange={e => setEmail(e.target.value)} />
             </label>
             <label>
-                GPA:<input type="number" value={gpa} onChange={e => setGpa(Number(e.target.value))} />
+                GPA: <br></br> <input placeholder='Enter Student GPA:' step={0.1} type="number" onChange={e => setGpa(Number(e.target.value))} />
             </label>
-            <input className="submit" type="submit" value="Submit" />
+            <input className="submit" disabled={submitDisabled} type="submit" value="Submit" />
+            <ErrorDisplay errors={errors} />
         </form>
     )
 }

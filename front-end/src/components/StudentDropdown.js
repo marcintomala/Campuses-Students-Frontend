@@ -18,8 +18,9 @@ export default function StudentDropdown(props) {
             const studId = Number(e.target.value);
             await cCampus(studId, id);
             await props.setStudents(prevStudents => {
+                console.log(prevStudents)
                 const newStudents = {...prevStudents};
-                newStudents[studId] = otherStudents[studId];
+                newStudents.students[studId] = otherStudents[studId];
                 return newStudents;
             })}}>
             <option key={1} value="none">Add Students...</option>

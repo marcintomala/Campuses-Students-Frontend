@@ -24,7 +24,7 @@ export default function StudentCard(props) {
                     cCampus(student.id, null);
                     props.setStudents(prevStudents => {
                         const newStudents = {...prevStudents};
-                        delete newStudents[id];
+                        delete newStudents.students[id];
                         return newStudents;
                 })}}>Remove From Campus</button>}
         </div>

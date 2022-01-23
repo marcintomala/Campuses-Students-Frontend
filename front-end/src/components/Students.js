@@ -12,8 +12,8 @@ export default function Students() {
     return (
         <>
             {!loading && studentsView && <div className="students-view">
-                {Object.keys(students).length > 0 && <h1>Here are all the students!</h1>}
                 {Object.keys(students).length === 0 && <h1>The are currently no students in the database :(</h1>}
+                {Object.keys(students).length > 0 && <h1>Here are all the students!</h1>}
                 <Link to={`/students/add`} className='button-link'>
                     <button type="button">
                         Add Student

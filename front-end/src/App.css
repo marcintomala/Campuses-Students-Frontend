@@ -1,259 +1,266 @@
+* {
+  margin: 0;
+  padding: 0;
+} 
+
 .Campuses, .Students {
-    float: right;
-    padding-right: 5px;
-  }
-  
-  .navbar {
-    display: flex;
-    align-items: center;
-    background-color: steelblue;
-    height: 120px;
-  }
-  
-  .navbar > h1 {
-    letter-spacing: 1px;
-    margin-left: 30px;
-    font-size: 30px;
-    color: azure;
-  }
-  
-  .nav-link {
-    letter-spacing: 1px;
-    padding-left: 40px;
-    text-decoration: none;
-    color: azure;
-  }
-  
-  .nav-links{
-    font-size: 20px;
-  }
-  
-  .nav-links > .nav-link:hover{
-    font-size: 25px;
-  }
-  
-  .campuses-view {
-    text-align: center;
-  }
-  
-  .campuses-view-campus-cards {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  
-  .campus-card {
-    background-color: rgb(185, 180, 180);
-    width: 500px;
-    margin: 20px;
-    padding:15px 0px;
-    border-radius: 9px;
-  }
-  
-  .campus-card img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 75%;
-    height: 200px;
-  }
-  
-  .campus-card h1{
-    word-wrap: break-word;
-    text-align: center;
-  }
+  float: right;
+  padding-right: 5px;
+}
 
-  .campus-view-main {
-    scroll-behavior: smooth;
-  }
-  
-  .campus-view {
-    margin: 2vw;
-    display: flex;
-    flex-direction: row;
-    align-items: top;
-  }
-  
-  .campus-view-left {
-    display: flex;
-    flex-direction: column;
-    height: 40vh;
-    width: 70vh;
-  }
-  
-  .campus-view-left > img {
-    height: 30vw;
-    width: 33vw;
-    border-radius: 10px;
-  }
-  
-  .campus-buttons {
-    margin-top: 10px;
-    display: flex;
-  }
-  
-  .campus-info {
-    display: flex;
-    flex-direction: column;
-    width: 20vw;
-    margin-right: auto;
-  }
-  
-  .campus-students {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    width: 60vw;
-  }
-  
-  .campus-students-cards {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  
-  .campus-students-card {
-    background-color: rgb(185, 180, 180);
-    width: 250px;
-    margin: 1vw;
-    padding: 15px 0px;
-    border-radius: 9px;
-    text-align: center;
-  }
+h1 {
+  margin: 1vh 1vw;
+}
 
-  .campus-students-card img{
-    border-radius: 9px;
-    display: block;
-    margin: 0 auto;
-    height: 70%;
-    width: 70%;
-  }
-  
-  .students-view {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: steelblue;
+  height: 120px;
+}
 
-  .student-view {
-    margin: 2vw;
-    display: flex;
-    flex-direction: row;
-    align-items: top;
-  }
-  
-  .student-view-left {
-    display: flex;
-    flex-direction: column;
-    height: 40vh;
-    width: 70vh;
-  }
-  
-  .student-view-left > img {
-    height: 30vw;
-    width: 33vw;
-    border-radius: 10px;
-  }
-  
-  .student-buttons {
-    margin-top: 10px;
-    display: flex;
-  
-  }
-  
-  .student-info {
-    display: flex;
-    flex-direction: column;
-    width: 20vw;
-    margin-right: auto;
-  }
-  
-  .student-cards {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  
-  .student-card {
-    background-color: rgb(185, 180, 180);
-    width: 325px;
-    margin: 2vw;
-    padding: 15px 0px;
-    border-radius: 9px;
-    text-align: center;
-  }
-  
-  .student-card img{
-    border-radius: 9px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 50%;
-    width: 50%;
-  }
-  
-  .submit, button {
-    font-size: 1.5vh;
-    letter-spacing: 2px;
-    cursor: pointer;
-    user-select: none;
-    height: 4vh;
-    width: 10vw;
-    color: azure;
-    background-color: steelblue;
-    border: none;
-    border-radius: 5px;
-    margin: 1vh;
-  }
-  
-  .submit:hover, button:hover {
-    background-color: midnightblue;
-  }
+.navbar > h1 {
+  letter-spacing: 1px;
+  margin-left: 30px;
+  font-size: 30px;
+  color: azure;
+}
 
-  span {
-    padding-left: 5px;
-  }
+.nav-link {
+  letter-spacing: 1px;
+  padding-left: 40px;
+  text-decoration: none;
+  color: azure;
+}
+
+.nav-links{
+  font-size: 20px;
+}
+
+.nav-links > .nav-link:hover{
+  font-size: 25px;
+}
+
+.campuses-view {
+  text-align: center;
+}
+
+.campuses-view-campus-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.campus-card {
+  background-color: rgb(185, 180, 180);
+  height: 380px;
+  min-width: 300px;
+  width: 440px;
+  margin: 20px;
+  padding:15px 0px;
+  border-radius: 9px;
+}
+
+.campus-card img{
+  border-radius: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  height: 200px;
+}
+
+.campus-card h1{
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.campus-view-main {
+  scroll-behavior: smooth;
+}
+
+.campus-view {
+  margin: 2vw;
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+}
+
+.campus-view-left {
+  display: flex;
+  flex-direction: column;
+  min-height: 50vh;
+  height: 50vh;
+  width: 70vh;
+}
+
+.campus-view-left > img {
+  height: 40vh;
+  width: 33vw;
+  border-radius: 10px;
+}
+
+.campus-buttons {
+  margin-top: 10px;
+  display: flex;
+  margin-bottom: 2vh;
+}
+
+.campus-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  width: 40vw;
+  margin-right: auto;
+}
+
+.campus-students {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 60vw;
+}
+
+.campus-students-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.campus-students-card {
+  background-color: rgb(185, 180, 180);
+  width: 250px;
+  margin: 1vw;
+  padding: 15px 0px;
+  border-radius: 9px;
+  text-align: center;
+}
+
+.campus-students-card img{
+  border-radius: 9px;
+  display: block;
+  margin: 0 auto;
+  height: 70%;
+  width: 70%;
+}
+
+.student-view {
+  margin: 2vw;
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+}
+
+.student-view-left {
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  width: 70vh;
+}
+
+.student-view-left > img {
+  height: 30vw;
+  width: 33vw;
+  border-radius: 10px;
+}
+
+.student-buttons {
+  margin-top: 10px;
+  display: flex;
   
-  .Links {
-    background-color: darkgray;
-    padding: 5px;
-    width: 500px;
-    margin: auto;
-    font-size: 20px;
-  }
-  
-  a {
-    color: black;
-  }
-  
-  .homepage{
-    text-align: center;
-  }
-  
-  .add-campus-form{
-    text-align: center;
-  }
-  
-  .form-description{
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .form-description textarea{
-    width: 400px;
-    height: 100px;
-    font-size: 17px;
-  }
-  
-  .add-student-form{
-    text-align: center;
-  }
-  
-  .edit-campus-form{
-    text-align: center;
-  }
-  
-  .edit-student-form{
-    text-align: center;
-  }
+}
+
+.student-info {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  margin-right: auto;
+}
+
+.students-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.student-cards {
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.student-card {
+  background-color: rgb(185, 180, 180);
+  width: 300px;
+  margin: 3.5vw;
+  padding: 15px 0px;
+  border-radius: 9px;
+  text-align: center;
+}
+
+.student-card button {
+  margin-top: 2vh;
+}
+
+.student-card img{
+  border-radius: 9px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 50%;
+  width: 50%;
+}
+
+.submit, button {
+  font-size: 1.5vh;
+  letter-spacing: 2px;
+  cursor: pointer;
+  user-select: none;
+  height: 4vh;
+  min-width: 100px;
+  width: 10vw;
+  color: azure;
+  background-color: steelblue;
+  border: none;
+  border-radius: 5px;
+  margin: 1vh;
+}
+
+.submit:hover, button:hover {
+  background-color: midnightblue;
+}
+
+.submit:disabled {
+  background-color: lightgrey;
+  color: white;
+  cursor: not-allowed;
+}
+
+span {
+  padding-left: 5px;
+}
+
+.homepage{
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.form-description{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-description textarea{
+  width: 400px;
+  height: 100px;
+  font-size: 17px;
+}

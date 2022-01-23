@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import { CampusesContext } from "../contexts/campusesContext";
+import ErrorDisplay from "./ErrorDisplay";
 
 export default function AddCampus() {
     const [name, setName] = useState("");
@@ -15,6 +16,24 @@ export default function AddCampus() {
         return await add(name, imageUrl, address, description);
     }
     
+    let errors;
+    let submitDisabled = true; 
+
+    function validate() {
+        errors = {};
+        if (name === '') {
+            errors['name'] = "Name cannot be empty."
+        } 
+        if (address === '') {
+            errors['address'] = "Address must not be empty."
+        }
+        if (Object.keys(errors).length === 0) {
+            submitDisabled = false;
+        }
+    }
+
+    validate();
+
     return (
         <form className='add-campus-form' 
             onSubmit={ async e => {
@@ -24,19 +43,21 @@ export default function AddCampus() {
                     navigate(`/campuses/${newCampusId}`);
                 }
             }>
+            <h1>Add New Campus</h1>
             <label>
-                Name:<input type="text" value={name} onChange={e => setName(e.target.value)} />
+                Name: <br></br> <input placeholder='Enter Campus Name:' type="text" value={name} onChange={e => setName(e.target.value)} />
             </label>
             <label>
-                Image URL:<input type="text" value={imageUrl} onChange={e => setImageUrl(e.target.value)} />
+                Image URL: <br></br> <input placeholder='Enter Campus photo URL:' type="text" value={imageUrl} onChange={e => setImageUrl(e.target.value)} />
             </label>
             <label>
-                Address:<input type="text" value={address} onChange={e => setAddress(e.target.value)} />
+                Address: <br></br> <input placeholder='Enter Campus address:' type="text" value={address} onChange={e => setAddress(e.target.value)} />
             </label>
             <label>
-                Description:<input type="text" value={description} onChange={e => setDescription(e.target.value)} />
+                Description: <br></br> <input placeholder='Describe the campus:' type="textarea" value={description} onChange={e => setDescription(e.target.value)} />
             </label>
-            <input className="submit" type="submit" value="Submit" />
+            <input className="submit" disabled={submitDisabled} type="submit" value="Submit" />
+            <ErrorDisplay errors={errors} />
         </form>
     )
 }
