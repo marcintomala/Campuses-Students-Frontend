@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Fullstack-CRUD-Application-Frontend/static/css/main.2073edc1.css",
-    "main.js": "/Fullstack-CRUD-Application-Frontend/static/js/main.15cf3b72.js",
+    "main.css": "/Fullstack-CRUD-Application-Frontend/static/css/main.c4311acc.css",
+    "main.js": "/Fullstack-CRUD-Application-Frontend/static/js/main.0c3848e2.js",
     "static/js/787.b3a40fe8.chunk.js": "/Fullstack-CRUD-Application-Frontend/static/js/787.b3a40fe8.chunk.js",
     "index.html": "/Fullstack-CRUD-Application-Frontend/index.html",
-    "main.2073edc1.css.map": "/Fullstack-CRUD-Application-Frontend/static/css/main.2073edc1.css.map",
-    "main.15cf3b72.js.map": "/Fullstack-CRUD-Application-Frontend/static/js/main.15cf3b72.js.map",
+    "main.c4311acc.css.map": "/Fullstack-CRUD-Application-Frontend/static/css/main.c4311acc.css.map",
+    "main.0c3848e2.js.map": "/Fullstack-CRUD-Application-Frontend/static/js/main.0c3848e2.js.map",
     "787.b3a40fe8.chunk.js.map": "/Fullstack-CRUD-Application-Frontend/static/js/787.b3a40fe8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2073edc1.css",
-    "static/js/main.15cf3b72.js"
+    "static/css/main.c4311acc.css",
+    "static/js/main.0c3848e2.js"
   ]
 }
