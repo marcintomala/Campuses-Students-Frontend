@@ -14,11 +14,10 @@ export default function StudentDropdown(props) {
     }
 
     return (
-        <select onChange={async e => {
+        <select className='dropdown' onChange={async e => {
             const studId = Number(e.target.value);
             await cCampus(studId, id);
             await props.setStudents(prevStudents => {
-                console.log(prevStudents)
                 const newStudents = {...prevStudents};
                 newStudents.students[studId] = otherStudents[studId];
                 return newStudents;

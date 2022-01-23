@@ -22,7 +22,7 @@ export default function AddCampus() {
     function validate() {
         errors = {};
         if (name === '') {
-            errors['name'] = "Name cannot be empty."
+            errors['name'] = "Name must not be empty."
         } 
         if (address === '') {
             errors['address'] = "Address must not be empty."
@@ -45,16 +45,16 @@ export default function AddCampus() {
             }>
             <h1>Add New Campus</h1>
             <label>
-                Name: <br></br> <input placeholder='Enter Campus Name:' type="text" value={name} onChange={e => setName(e.target.value)} />
+                Name: <br></br> <input className="form-input" placeholder='Enter Campus Name:' type="text" value={name} onChange={e => setName(e.target.value)} />
             </label>
             <label>
-                Image URL: <br></br> <input placeholder='Enter Campus photo URL:' type="text" value={imageUrl} onChange={e => setImageUrl(e.target.value)} />
+                Image URL: <br></br> <input className="form-input" placeholder='Enter Campus photo URL:' type="text" value={imageUrl} onChange={e => setImageUrl(e.target.value)} />
             </label>
             <label>
-                Address: <br></br> <input placeholder='Enter Campus address:' type="text" value={address} onChange={e => setAddress(e.target.value)} />
+                Address: <br></br> <input className="form-input" placeholder='Enter Campus address:' type="text" value={address} onChange={e => setAddress(e.target.value)} />
             </label>
             <label>
-                Description: <br></br> <input placeholder='Describe the campus:' type="textarea" value={description} onChange={e => setDescription(e.target.value)} />
+                Description: <br></br> <input  className="form-input" placeholder='Describe the campus:' value={description} onChange={e => setDescription(e.target.value)} />
             </label>
             <input className="submit" disabled={submitDisabled} type="submit" value="Submit" />
             <ErrorDisplay errors={errors} />

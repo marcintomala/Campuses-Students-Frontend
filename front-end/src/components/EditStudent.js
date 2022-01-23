@@ -92,16 +92,16 @@ export default function EditStudent() {
             }>
             <h1>Edit {student.firstName} {student.lastName} </h1>
             <label>
-                First Name: <br></br> <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                First Name: <br></br> <input  type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
             </label>
             <label>
-                Last Name: <br></br> <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                Last Name: <br></br> <input className={'not-empty'} type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
             </label>
             <label>
                 Image URL: <br></br><input type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
             </label>
             <label>
-                Email: <br></br> <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+                Email: <br></br> <input className={'not-empty'} type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </label>
             <label>
                 GPA: <br></br> <input type="number" step={0.1} value={gpa} onChange={(e) => setGpa(Number(e.target.value))} />

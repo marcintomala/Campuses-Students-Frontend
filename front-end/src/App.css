@@ -254,13 +254,48 @@ form {
   align-items: center;
 }
 
-.form-description{
+form > label > input{
+  margin: 10px 0;
+  width: 15vw;
+  height: 4vh;
+  border-radius: 5px;
+  padding: 3px 10px;
+  border: 1px steelblue solid;
+}
+
+form > .campus-card {
+  display: flex;
+  width: 18vw;
+  height: 10vh;
+}
+
+form > .campus-card  > img {
+  width: 6vw;
+  height: 7vh;
+  margin-left: 1vw;
+}
+
+form > .campus-card > a {
+  margin: 0;
+  padding: 0;
+}
+
+.form-description {
   margin-left: auto;
   margin-right: auto;
 }
 
-.form-description textarea{
+form label input textarea {
   width: 400px;
   height: 100px;
   font-size: 17px;
+}
+
+.dropdown {
+  margin: 10px 0;
+  width: 15vw;
+  height: 4vh;
+  border-radius: 5px;
+  padding: 3px 10px;
+  border: 1px steelblue solid;
 }
