@@ -4,6 +4,8 @@ import {
   faFacebook,
   faTwitter,
   faInstagram,
+  faGmail,
+
 } from "@fortawesome/free-brands-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -47,13 +49,14 @@ export default function Footer() {
           >
             <FontAwesomeIcon icon={faInstagram} size="2x" />
           </a>
+          
         </div>
 
         <div className="contact-us column">
           <h3>Contact Us</h3>
           <p>Phone: 123-456-7890</p>
           <p>Fax: 123-456-7890</p>
-          <p>Email: </p>
+          <p>Email: GROUP1@TTP_RESIDENCE.COM </p>
         </div>
       </div>
     </footer>
