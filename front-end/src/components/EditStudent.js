@@ -91,7 +91,6 @@ export default function EditStudent() {
                         gpa : gpa,
                         campusId : campus ? campusId : null
                     }
-                    console.log(student)
                     await editStudent(student);
                     navigate(`/students/${id}`);
                 }
