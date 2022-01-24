@@ -4,6 +4,16 @@ import StudentCard from './StudentCard';
 import { CampusesContext } from '../contexts/campusesContext';
 import { StudentsContext } from '../contexts/studentsContext';
 
+/* Individual Campus profile component. I (Marcin) decided to write some hacky logic here to make sure that the app doesn't break.
+The API data is fetched only by the context managers and that state is what the user sees at all times. Since a fetch call is wrapped in useEffect(),
+ it will not run immediately when the App is rendered, but with a slight delay. As such, I ran into some problems where
+  - if entered directly via /campuses/:id or /students/:id - the profile pages would try to grab
+data from the respective context that *wasn't there yet*, since the context manager did not yet establish its state. 
+
+So what's the hacky part? Lines 19-27 define a procedure that initially loads a placeholder student (with id -1 that can not exist in the database).
+While that dummy profile is in play, nothing is rendered (loading boolean that effectively blocks any rendering). Once the context manager settles in,
+it will rerender the Campus component, now with a working set of campuses to work with. */
+
 export default function Campus() {
     const params = useParams();
     const navigate = useNavigate();

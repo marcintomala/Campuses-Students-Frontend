@@ -2,6 +2,14 @@ import React, { useContext } from "react";
 import { Link, useLocation } from 'react-router-dom'
 import { CampusesContext } from "../contexts/campusesContext";
 
+/* Simple Campus Card component to be rendered by the all Campuses view. Since context manager manages to grab the state in time 
+for the campuses view, no hacky logic from Campus.js is required. Placeholder image provided in case there url is an empty string.
+While there is logic to set a default value in the backend, it doesn't kick in properly and the post requests in the frontend have
+to be rewritten to better mesh with it. Until then - placeholder.
+
+Some conditional rendering is included to modify aspects of the cards depending on where we are. Delete button only available
+on campuses view, not in EditStudent view. */
+
 export default function CampusCard(props) {
     const campus = props.campus;
     const location = useLocation();

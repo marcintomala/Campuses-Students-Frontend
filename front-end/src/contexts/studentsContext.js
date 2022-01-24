@@ -1,6 +1,8 @@
 import React, {useEffect, useState } from "react";
 import axios from "axios";
 
+/* Students Context manager. It all works surprisingly well for what it feels like. */
+
 export const StudentsContext = React.createContext({
     students : {},
     addStudent: (firstName, lastName, imageUrl, email, gpa) => {},

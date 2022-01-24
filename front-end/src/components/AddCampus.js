@@ -3,6 +3,18 @@ import { useNavigate } from 'react-router-dom'
 import { CampusesContext } from "../contexts/campusesContext";
 import ErrorDisplay from "./ErrorDisplay";
 
+/* This component is responsible for rendering the 'Add Campus' form. The logic included goes as follows:
+- The values of the input fields are stored in the state (default = "").
+- As the user enters data, the state is updated and validated.
+- If invalid data is entered, the submitDisabled pseudo-state blocks the submit button from being clicked.
+- Error messages provided by ErrorDisplay are also displayed under the submit button to inform the user of the problem.
+
+On submit, two important things happen:
+1. The component gathers the entered data and, using a function from campuses context, sents a put request to the API.
+2. The function also places the created campus in the campuses context's campuses object - i.e. locally built and maintained
+    global state. This is done to minimize fetch calls until they are absolutely necessary.
+*/
+
 export default function AddCampus() {
     const [name, setName] = useState("");
     const [imageUrl, setImageUrl] = useState("");

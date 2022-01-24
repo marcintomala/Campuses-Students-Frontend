@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import { StudentsContext } from "../contexts/studentsContext";
 import ErrorDisplay from "./ErrorDisplay";
 
+/* Student equivalent of the AddCampus component. Same logic (roughly) applies. */
+
+
 export default function AddStudent() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -41,6 +44,7 @@ export default function AddStudent() {
             submitDisabled = false;
         }
     }
+    
     validate();
 
     return (

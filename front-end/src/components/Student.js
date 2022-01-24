@@ -4,6 +4,8 @@ import CampusCard from './CampusCard';
 import { StudentsContext } from '../contexts/studentsContext';
 import { CampusesContext } from '../contexts/campusesContext';
 
+/* Similar to Campus, including the hacky logic. */
+
 export default function Student() {
     const params = useParams();
     const navigate = useNavigate();

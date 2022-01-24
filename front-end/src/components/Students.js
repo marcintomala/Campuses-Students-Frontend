@@ -3,6 +3,8 @@ import StudentCard from "./StudentCard";
 import { Link, useLocation } from "react-router-dom";
 import { StudentsContext } from "../contexts/studentsContext";
 
+/* StudentCard container */
+
 export default function Students() {
     const location = useLocation();
     const studentsView = location.pathname === '/students';

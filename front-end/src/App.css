@@ -299,3 +299,36 @@ form label input textarea {
   padding: 3px 10px;
   border: 1px steelblue solid;
 }
+
+.homepage h1 {
+  margin: 3vh 0 1vh;
+}
+
+.home-list {
+  text-align: center;
+  letter-spacing: 1px;
+  margin-top: 2vh;
+  width: 40vw;
+  margin: 10vh auto;
+}
+
+.homepage ul {
+  list-style: none;
+  margin-bottom: 5vh;
+  font-size: 20px;
+  text-align: justify;
+}
+
+.homepage li {
+  margin: 1vw 1vw;
+}
+
+.homepage li::before {
+  color: steelblue;
+  content: "• ";
+}
+
+.body-link {
+  text-decoration: none;
+  color: steelblue;
+}
