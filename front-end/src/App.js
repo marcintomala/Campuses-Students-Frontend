@@ -19,7 +19,7 @@ function App() {
     <div className='app'>
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<PageWrapper title="Home"><Home /></PageWrapper>}/>
+              <Route index element={<PageWrapper title="Home"><Home /></PageWrapper>}/>       
               <Route path="/students" element={<PageWrapper title="Students"><Students /></PageWrapper>}/>
               <Route path="/students/:id" element={<PageWrapper title="Single Student View"><Student /></PageWrapper>}/>
               <Route path="/students/:id/edit" element={<PageWrapper title="Edit Student"><EditStudent /></PageWrapper>}/>

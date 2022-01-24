@@ -332,3 +332,37 @@ form label input textarea {
   text-decoration: none;
   color: steelblue;
 }
+
+.footer--pin {
+  align-items: center;
+  height: 120px;
+  background-color: steelblue;
+  color: white;
+  
+}
+
+/* .developers{
+text-decoration:none;
+} */
+
+/* 
+.follows {
+  
+  position: absolute;
+  width:33%;
+}
+.contact-us {
+  
+  margin: 0 15px;
+  float: right;
+  width:33%;
+} */
+
+.column{
+  width: 33%;
+  padding-left: 30px;
+  font-size: 18px;
+}
+.about-us{
+  display: flex;
+}
