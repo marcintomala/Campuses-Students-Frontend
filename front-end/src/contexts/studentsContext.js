@@ -42,6 +42,7 @@ export default function Students(props) {
     }
 
     async function editStudent(student) {
+        console.log(student);
         await axios.put('https://ttp-college-db.herokuapp.com/students', {
             id : student.id,
             firstName : student.firstName,

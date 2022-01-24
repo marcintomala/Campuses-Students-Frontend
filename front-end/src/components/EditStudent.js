@@ -89,8 +89,9 @@ export default function EditStudent() {
                         imageUrl : imageUrl,
                         email : email,
                         gpa : gpa,
-                        campusId : campusId
+                        campusId : campus ? campusId : null
                     }
+                    console.log(student)
                     await editStudent(student);
                     navigate(`/students/${id}`);
                 }
