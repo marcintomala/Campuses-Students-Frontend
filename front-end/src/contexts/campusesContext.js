@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 /* Here's where the magic happens. All the data is fetched here and all the request functions originate from here
@@ -72,17 +72,12 @@ export default function Campuses(props) {
     }
 
     async function deleteCampus(id) {
-        if(id == 51) {
-            window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
-            alert("Why would you do that?")
-        } else {
-            await axios.delete('https://ttp-college-db.herokuapp.com/campuses/' + id);
-            setCampuses(prevCampuses => {
-                const newCampuses = {...prevCampuses};
-                delete newCampuses[id];
-                return newCampuses;
-            })
-        }
+        await axios.delete('https://ttp-college-db.herokuapp.com/campuses/' + id);
+        setCampuses(prevCampuses => {
+            const newCampuses = {...prevCampuses};
+            delete newCampuses[id];
+            return newCampuses;
+        })
     }
 
     return (

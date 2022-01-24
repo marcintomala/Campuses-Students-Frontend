@@ -34,7 +34,8 @@ export default function EditStudent() {
     const [email, setEmail] = useState(student.email);
     const [gpa, setGpa] = useState(student.gpa);
     const [campusId, setCampusId] = useState(student.campusId);
-    const campus = useContext(CampusesContext).campuses[campusId];
+    let campus = useContext(CampusesContext).campuses[campusId];
+    campus = campus ? campus : null
 
     // ????????????????????????????????
     const formNotDirty = ( 
@@ -88,7 +89,7 @@ export default function EditStudent() {
                         imageUrl : imageUrl,
                         email : email,
                         gpa : gpa,
-                        campusId : campusId
+                        campusId : campus ? campusId : null
                     }
                     await editStudent(student);
                     navigate(`/students/${id}`);
@@ -110,9 +111,9 @@ export default function EditStudent() {
             <label>
                 GPA: <br></br> <input type="number" step={0.1} value={gpa} onChange={(e) => setGpa(Number(e.target.value))} />
             </label>
-            {campusId && <CampusCard className={'edit-student-campus-card'} key={campusId} campus={campus} />}
-            {!campusId && <CampusDropdown setCampusId={setCampusId} />}
-            {campusId && <button type="button" onClick={e => { setCampusId(null); }}>Remove From Current Campus</button>}
+            {campus && <CampusCard className={'edit-student-campus-card'} key={campusId} campus={campus} />}
+            {!campus && <CampusDropdown setCampusId={setCampusId} />}
+            {campus && <button type="button" onClick={e => { setCampusId(null); }}>Remove From Current Campus</button>}
             <input className="submit" type="submit" value="Submit" disabled={submitDisabled} />
             <button type="button" name="Cancel" onClick={() => navigate(`/students/${id}`)}>Cancel</button>
             <ErrorDisplay errors={errors} />

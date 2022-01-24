@@ -6,6 +6,7 @@ import axios from "axios";
 export const StudentsContext = React.createContext({
     students : {},
     addStudent: (firstName, lastName, imageUrl, email, gpa) => {},
+    setStudents: () => {},
     editStudent: (student) => {},
     deleteStudent: (id) => {},
     changeCampus: (studentId, campusId) => {}, 
@@ -115,7 +116,7 @@ export default function Students(props) {
     }
     
     return (
-        <StudentsContext.Provider value={{students: students, addStudent: addStudent,
+        <StudentsContext.Provider value={{students: students, addStudent: addStudent, setStudents : setStudents,
             editStudent: editStudent, deleteStudent: deleteStudent, changeCampus: changeCampus, getByCampus: getByCampus}}>
             {props.children}
         </StudentsContext.Provider>
