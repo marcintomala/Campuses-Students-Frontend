@@ -366,3 +366,19 @@ text-decoration:none;
 .about-us{
   display: flex;
 }
+
+a.youtube {
+  color: #eb3223;
+}
+
+a.facebook {
+  color: rgb(30,71,153);
+}
+
+a.twitter {
+  color: #49a1eb;
+}
+
+a.instagram {
+  color: black;
+}
