@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 /* Here's where the magic happens. All the data is fetched here and all the request functions originate from here
