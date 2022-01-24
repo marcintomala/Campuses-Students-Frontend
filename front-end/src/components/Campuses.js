@@ -3,6 +3,8 @@ import CampusCard from "./CampusCard";
 import { Link } from "react-router-dom";
 import { CampusesContext } from "../contexts/campusesContext";
 
+/* Campus Card container. */
+
 export default function Campuses() {
     const campuses = useContext(CampusesContext).campuses;
     const loading = campuses[-1];

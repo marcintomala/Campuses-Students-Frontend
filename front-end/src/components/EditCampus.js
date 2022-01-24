@@ -6,6 +6,20 @@ import StudentDropdown from "./StudentDropdown";
 import { StudentsContext } from "../contexts/studentsContext";
 import ErrorDisplay from "./ErrorDisplay";
 
+/* Hacky logic (see Campus.js) is present in this component as well, but only to load *something* before redirecting away. 
+After all, how can a user know to edit an entry if they haven't yet seen it? 😉 
+
+Similarly to the AddCampus/AddStudent forms, there is also form validation here, but with a twist! 
+1. The fields start off populated with the information that we're trying to edit. 
+2. The submit button is greyed out until something changed - we don't need fake edits, after all.
+3. The students enrolled part of this was the biggest pain. Some more hacky logic was required to maintain
+the initial list of students. 
+
+Just like in Add menus, things are also pushed to the app's state besides the database for more performant behaviour 
+(and fewer calls to the API). I assume things will break when two people try to edit the same campus simultaneously 
+and that's something to ponder in the future. */ 
+
+
 export default function EditCampus() {
     const params = useParams();
     const id = Number(params.id);
@@ -53,7 +67,8 @@ export default function EditCampus() {
         return true;
     }
 
-    const formNotDirty = (
+    // ????????????????????????????????
+    const formNotDirty = ( 
         name === campus.name ?
         imageUrl === campus.imageUrl ? 
         address === campus.address ?

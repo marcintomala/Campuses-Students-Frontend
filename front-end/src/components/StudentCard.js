@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { Link, useLocation } from 'react-router-dom'
 import { StudentsContext } from "../contexts/studentsContext";
 
+/* Student equivalent of the Campus Card */
+
 export default function StudentCard(props) {
     const student = props.student;
     const id = student.id;

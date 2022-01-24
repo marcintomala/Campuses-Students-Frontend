@@ -1,5 +1,8 @@
 import React from "react";
 
+/* Simple, but infromative. Gets an errors object from parent (one of the add or edit forms)
+and displays its contents. */
+
 export default function ErrorDisplay(props) {
     const errors = props.errors;
     const errorTags = Object.keys(errors);

@@ -1,6 +1,11 @@
 import React, {useEffect, useState } from "react";
 import axios from "axios";
 
+/* Here's where the magic happens. All the data is fetched here and all the request functions originate from here
+to propagate to the entire app. Keeps the fetch logic in one place.
+
+Oh. Don't delete Brooklyn College. */
+
 export const CampusesContext = React.createContext({
     campuses : {},
     addCampus: (name, imageUrl, address, description) => {},
@@ -67,12 +72,17 @@ export default function Campuses(props) {
     }
 
     async function deleteCampus(id) {
-        await axios.delete('https://ttp-college-db.herokuapp.com/campuses/' + id);
-        setCampuses(prevCampuses => {
-            const newCampuses = {...prevCampuses};
-            delete newCampuses[id];
-            return newCampuses;
-        })
+        if(id == 51) {
+            window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
+            alert("Why would you do that?")
+        } else {
+            await axios.delete('https://ttp-college-db.herokuapp.com/campuses/' + id);
+            setCampuses(prevCampuses => {
+                const newCampuses = {...prevCampuses};
+                delete newCampuses[id];
+                return newCampuses;
+            })
+        }
     }
 
     return (

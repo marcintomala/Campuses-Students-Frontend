@@ -6,6 +6,8 @@ import CampusCard from "./CampusCard";
 import CampusDropdown from "./CampusDropdown";
 import ErrorDisplay from "./ErrorDisplay";
 
+/* Similar to EditCampus, except there was far less hassle with submit button blocking since one student can only have one campus.*/
+
 export default function EditStudent() {
     const params = useParams();
     const id = Number(params.id);
@@ -34,7 +36,8 @@ export default function EditStudent() {
     const [campusId, setCampusId] = useState(student.campusId);
     const campus = useContext(CampusesContext).campuses[campusId];
 
-    const formNotDirty = (
+    // ????????????????????????????????
+    const formNotDirty = ( 
         firstName === student.firstName ?
         lastName === student.lastName ? 
         imageUrl === student.imageUrl ? 
@@ -43,6 +46,7 @@ export default function EditStudent() {
         campusId === student.campusId : 
         false : false : false : false : false
     )
+
     let errors = {};
     let submitDisabled = true;
 

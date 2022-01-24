@@ -2,6 +2,10 @@ import React, { useContext } from "react";
 import { useParams } from "react-router";
 import { StudentsContext } from "../contexts/studentsContext";
 
+
+/* Campus equivalent of the CampusDropdown. Gets all of the students from the context, because 
+sometimes we might want to switch students from one college to another. */
+
 export default function StudentDropdown(props) {
     const params = useParams();
     const id = Number(params.id);
