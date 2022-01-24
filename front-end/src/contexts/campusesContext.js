@@ -72,17 +72,12 @@ export default function Campuses(props) {
     }
 
     async function deleteCampus(id) {
-        if(id == 51) {
-            window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
-            alert("Why would you do that? 😉")
-        } else {
-            await axios.delete('https://ttp-college-db.herokuapp.com/campuses/' + id);
-            setCampuses(prevCampuses => {
-                const newCampuses = {...prevCampuses};
-                delete newCampuses[id];
-                return newCampuses;
-            })
-        }
+        await axios.delete('https://ttp-college-db.herokuapp.com/campuses/' + id);
+        setCampuses(prevCampuses => {
+            const newCampuses = {...prevCampuses};
+            delete newCampuses[id];
+            return newCampuses;
+        })
     }
 
     return (

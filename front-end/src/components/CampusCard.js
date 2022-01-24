@@ -25,14 +25,6 @@ export default function CampusCard(props) {
         return (<Link to={to} className='nav-link'>{contents}</Link>)
     }
 
-    function mouseOverEvent(e) {
-        if (e.type === 'mouseenter') {
-            e.target.innerHTML = 'At Your Own Risk'
-        }
-        if (e.type === 'mouseleave') {
-            e.target.innerHTML = 'Delete'
-        }
-    }
 
     return (
         <>
@@ -40,7 +32,7 @@ export default function CampusCard(props) {
             <div className="campus-card">
                 <img src={campus?.imageUrl ? campus.imageUrl : placeholderImage} alt={`${campus?.name}`} />
                 {link(`/campuses/${campus?.id}`, <h1>{campus?.name}</h1>)}
-                {origin.startsWith('/campuses') && <button name="delete" value="delete" onClick={async () => await deleteCampus(campus.id)} onMouseEnter={e => {if(campus.id === 51) { mouseOverEvent(e) }}} onMouseLeave={e => {if(campus.id === 51) { mouseOverEvent(e) }}}>Delete</button>}
+                {origin.startsWith('/campuses') && <button name="delete" value="delete" onClick={async () => await deleteCampus(campus.id)}>Delete</button>}
             </div>}
         </>
     )
